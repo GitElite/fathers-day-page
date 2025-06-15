@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Fathers Day</title>
+  <style>
+    @font-face {
+      font-family: "Lucky Father";
+      src: url("Lucky Father.otf") format("opentype");
+    }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f0f8ff;
+      font-family: "Lucky Father", Arial, sans-serif;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 0.5em;
+    }
+    p {
+      font-size: 1.2em;
+      margin: 10px 0;
+      line-height: 1.4;
+    }
+    img.content-gif {
+      margin-top: 20px;
+      width: 300px;
+      border-radius: 10px;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 0.8em;
+      color: #7f8c8d;
+    }
+
+    .trumpet {
+      position: fixed;
+      top: 50%;
+      width: 180px;
+      transform: translateY(-50%) rotate(0deg);
+    }
+    .trumpet.left {
+      left: -220px;
+      transform-origin: right center;
+    }
+    .trumpet.right {
+      right: -330px;
+      transform-origin: left center;
+      transform: translateY(-50%) scaleX(-1);
+    }
+    @keyframes peekLeft {
+      0%   { left: -220px; transform: translateY(-50%) rotate(0deg); }
+      50%  { left: 20px;   transform: translateY(-50%) rotate(0deg); }
+      100% { left: 20px;   transform: translateY(-50%) rotate(45deg); }
+    }
+    @keyframes peekRight {
+      0%   { right: -330px; transform: translateY(-50%) scaleX(-1) rotate(0deg); }
+      50%  { right: 20px;   transform: translateY(-50%) scaleX(-1) rotate(0deg); }
+      100% { right: 20px;   transform: translateY(-50%) scaleX(-1) rotate(45deg); }
+    }
+    .animate-left  { animation: peekLeft 2s ease-in-out forwards; }
+    .animate-right { animation: peekRight 2s ease-in-out forwards; }
+
+    /* button styling – top margin reduced to move it up */
+    #playTrumpetBtn {
+      display: inline-block;
+      margin: 10px auto;        /* was 30px auto */
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      background: #2c3e50;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 0 #1a242f;
+      cursor: pointer;
+      transition: transform 0.1s, background 0.2s;
+    }
+    #playTrumpetBtn:hover {
+      background: #34495e;
+    }
+    #playTrumpetBtn:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow: 0 2px 0 #1a242f;
+    }
+    #playTrumpetBtn:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+    <img src="Trumpet!.png" alt="trumpet" class="trumpet left"  id="trumpetLeft">
+    <img src="Trumpet!.png" alt="trumpet" class="trumpet right" id="trumpetRight">
+
+  <h1>HEYYYYY DAAAADYYYYYY!!! Happy Father’s Day!💖</h1>
+
+  <p>Your words are important to me—the stories, advice, even those long talks I know I need but sometimes get tired of😅.</p>
+  <p><em>“The tongue of the wise brings healing.”</em> (Proverbs 12:18)</p>
+
+  <p>More than anything, you’ve walked in integrity.</p>
+  <p><em>“The righteous man walks in his integrity; his children are blessed after him.”</em> (Proverbs 20:7)</p>
+
+  <p>Thank you for being a father worth looking up to. I love and honor you today.</p>
+
+  <p><strong>We all love and appreciate you every day 👍<br>
+  Thanks for being the priest of this home and an awesome father figure.<br>
+  We pray for blessings upon you and anyone around you.</strong></p>
+
+  <img src="happy fathers day gif.gif" class="content-gif" alt="Happy Fathers Day">
+
+  <button id="playTrumpetBtn">Play Trumpet 🎺</button>
+
+  <footer>© 2023 Happy Fathers Day</footer>
+
+  <audio id="trumpetSound" src="happy-trumpet.m4a" preload="auto"></audio>
+
+  <script>
+    const trumpetSound = document.getElementById('trumpetSound');
+    const leftHorn = document.getElementById('trumpetLeft');
+    const rightHorn = document.getElementById('trumpetRight');
+    const playBtn = document.getElementById('playTrumpetBtn');
+
+    playBtn.addEventListener('click', () => {
+      trumpetSound.currentTime = 0;
+      trumpetSound.play();
+
+      [leftHorn, rightHorn].forEach(horn => {
+        horn.classList.remove('animate-left','animate-right');
+        void horn.offsetWidth;
+      });
+      leftHorn.classList.add('animate-left');
+      rightHorn.classList.add('animate-right');
+    });
+  </script>
+</body>
+</html>
